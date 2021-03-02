@@ -25,7 +25,6 @@ int main()
     cin.get();
     */
     
-    bool continuarCiclo = true;
     int opcionMenu;
     App programa; 
 //Creacion de cada medio
@@ -41,7 +40,7 @@ int main()
     programa.attach(youtube);
     
     Media* eleccion;
-    while(continuarCiclo){
+    while(true){
         
         cout<<"Menu de opciones, Que desea hacer?"<<endl;
         cout<<"1. Ver television"<<endl;
@@ -66,8 +65,7 @@ int main()
             eleccion = youtube;
             break;
         case 5:
-            continuarCiclo = !continuarCiclo;
-            break;
+            return 0;
         default:
             cout<<"No existe este codigo, ingrese uno valido"<<endl;
             break;
@@ -76,7 +74,4 @@ int main()
         
     }
 
-
-
-    return 0;
 }
