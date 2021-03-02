@@ -24,37 +24,56 @@ int main()
     cout << "Donezo" << endl;
     cin.get();
     */
+    
     bool continuarCiclo = true;
     int opcionMenu;
-    Media* accion;
+    App programa; 
+//Creacion de cada medio
+    Media* television = new Television;
+    Media* radio = new Radio;
+    Media* spotify = new Spotify;
+    Media* youtube = new Youtube;
+
+//Se ingresan al vector de la app
+    programa.attach(television);
+    programa.attach(radio);
+    programa.attach(spotify);
+    programa.attach(youtube);
+    
+    Media* eleccion;
     while(continuarCiclo){
         
         cout<<"Menu de opciones, Que desea hacer?"<<endl;
         cout<<"1. Ver television"<<endl;
         cout<<"2. Escuchar radio"<<endl;
-        cout<<"3. Escuchar musica"<<endl;
-        cout<<"4. Salir"<<endl;
+        cout<<"3. Escuchar en Spotify"<<endl;
+        cout<<"4. Escuchar en YouTube"<<endl;
+        cout<<"5. Salir"<<endl;
         cin>>opcionMenu;
 
         switch (opcionMenu)
         {
         case 1:
-            accion = new Television;
+            eleccion = television;
             break;
         case 2:
-            accion = new Radio;
+            eleccion = radio;
             break;
         case 3:
-            accion = new Music;
+            eleccion = spotify;
             break;
         case 4:
+            eleccion = youtube;
+            break;
+        case 5:
             continuarCiclo = !continuarCiclo;
             break;
         default:
             cout<<"No existe este codigo, ingrese uno valido"<<endl;
             break;
         }
-        accion->execute();
+        programa.executeEmisor(eleccion);
+        
     }
 
 

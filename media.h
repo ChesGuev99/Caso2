@@ -9,15 +9,19 @@ class Emision {
 public:
     // La función actual puede recibir uno o 2 char* , y con estos avisa al usuario que Media se
     // está emitiendo y en que aplicación de ser el segundo caso.
-    void actual(char *medio) {
-        printf("Actualmente se está emitiendo %s", medio);
+    void actual(string medio) {
+        cout<<"Actualmente se esta emitiendo "<< medio<<endl;
     }
 
-    void actual(char *medio, char *app) {
-        printf("Actualmente se está emitiendo %s en %s", medio, app);
+    void actual(string medio, string app) {
+        cout<<"Actualmente se está emitiendo " <<medio<<" en "<<app<<endl;
     }
 };
 
+/*
+Clase abstracta por el metodo execute
+Hereda a Television,Radio y Music
+*/
 class Media {
     // emisor es el observer de la clase Media
     // status indica cual se esta emitiendo, 0 = off y 1 = On
@@ -30,7 +34,7 @@ public:
     }
 
     // update llama al emisor para avisar que hubo un cambio
-    void update(char *media) {
+    void update(string media) {
         emisor.actual(media);
     }
 
@@ -42,7 +46,10 @@ public:
     }
 };
 
-
+/*
+Clase derivada de Media
+Define el metodo execute de manera distinta
+*/
 class Television : public Media {
 public:
     void execute() {
@@ -52,6 +59,10 @@ public:
 
 };
 
+/*
+Clase derivada de Media
+Define el metodo execute de manera distinta
+*/
 class Radio : public Media {
     void execute() {
         cout << "Se enciende la radio" << endl;
@@ -60,32 +71,38 @@ class Radio : public Media {
     }
 };
 
+
+/*
+Clase derivada de Media
+Define el metodo execute de manera distinta
+Hereda a Spotify y a Music
+*/
 class Music : public Media {
 private:
 
 public:
-    void update(char *media, char *app) {
+    void update_Music(string media, string app) {
         emisor.actual(media, app);
     }
 
     // excecute es ejecutada según la subclase, ya sea Spotify o Youtube
-    virtual void execute() {
+    void execute(){
+        cout<<"hola";
     }
-
 };
 
-class Spotify : public Music {
+class Spotify : public Music{
     void execute() {
         cout << "Se escucha Spotify" << endl;
-        this->update("Musica", "Spotify");
+        this->update_Music("Musica", "Spotify");
     }
 
 };
 
-class Youtube : public Music {
+class Youtube : public Music{
     void execute() {
         cout << "Se escucha Youtube" << endl;
-        this->update("Musica", "Youtube");
+        this->update_Music("Musica", "Youtube");
     }
 };
 
@@ -113,4 +130,3 @@ public:
         }
     };
 };
-
