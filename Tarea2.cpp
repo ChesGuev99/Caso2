@@ -7,8 +7,8 @@ using namespace std;
 
 int main()
 {
-    /*
-    Cola<int>* prueba =new Cola<int>();
+    
+    /*Cola<int>* prueba =new Cola<int>();
     prueba->push(1234);
     prueba->push(5678);
     prueba->push(9012);
@@ -18,12 +18,12 @@ int main()
     prueba->pop();
     prueba->mostrar();
     prueba->pop();
-    prueba->pop();
-    prueba->pop();
+
     prueba->mostrar();
+    */
     cout << "Donezo" << endl;
     cin.get();
-    */
+    
     
     int opcionMenu;
     App programa; 
